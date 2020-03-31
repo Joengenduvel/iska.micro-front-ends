@@ -1,15 +1,38 @@
 <html>
 <head>
 <title>Coolest App Ever</title>
+<link rel="stylesheet" href="./w3.css">
 </head>
 <body>
 <h1>Coolest App Ever</h1>
-<h2>V2</h2>
-<p>
-<a href="a.html">A</a>
-<a href="b.html">B</a>
-<!--# include file="a.html" -->
-<!--# include file="b.html" -->
-</p>
+
+<div class="w3-bar w3-black">
+  <button class="w3-bar-item w3-button tablink w3-red" onclick="openTab(event,'a')">A</button>
+  <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'b')">B</button>
+</div>
+
+<div id="a" class="tab">
+  <!--# include file="a.html" -->
+</div>
+<div id="b" class="tab" style="display:none">
+  <!--# include file="b.html" -->
+</div>
+
+<script>
+function openTab(evt, tabName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("tab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " w3-red";
+}
+</script>
 </body>
 </html>
+
