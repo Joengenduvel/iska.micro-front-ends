@@ -2,6 +2,8 @@
 <head>
 <title>Coolest App Ever</title>
 <link rel="stylesheet" href="./w3.css">
+<script type="module" src="./a.mjs"></script>
+<script type="module" src="./b.mjs"></script>
 </head>
 <body>
 <h1>Coolest App Ever</h1>
@@ -11,13 +13,15 @@
   <button class="w3-bar-item w3-button" onclick="openTab('b')">B</button>
 </div>
 
-<div id="A" class="tab">
-  <h2>A</h2>
+<div id="content" class="tab">
+  <component-a/>
 </div>
 
 <script>
 function openTab(tabName) {
-  window.location = tabName + ".html"
+  const content = document.getElementById("content");
+  content.innerHTML = "";
+  content.appendChild(document.createElement("component-"+tabName));
 }
 </script>
 </body>
